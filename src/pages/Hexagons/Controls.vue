@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       newColor: "",
-      isClosed: false,
+      isClosed: true,
     };
   },
   methods: {
