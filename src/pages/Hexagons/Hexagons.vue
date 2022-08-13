@@ -47,7 +47,7 @@ export default {
         "c4ec74",
         "fafa6e",
       ],
-      speed: 50,
+      speed: 500,
     };
   },
   mounted() {
