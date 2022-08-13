@@ -41,7 +41,7 @@ export default {
       return out
     },
     getRBGColor(){
-        `#${this.getNoiseHexPair(0.25)}${this.getNoiseHexPair(0.4)}${this.getNoiseHexPair(0.8)}`
+        return `#${this.getNoiseHexPair(0.25)}${this.getNoiseHexPair(0.4)}${this.getNoiseHexPair(0.8)}`
     },
     getGrayscaleColor(){
         let val = this.getNoiseHexPair(0.25)
@@ -50,10 +50,9 @@ export default {
     
   },
   mounted() {
-      this.color = this.getGrayscaleColor();
-
+      this.color = this.getRBGColor();
     setInterval(() => {
-      this.color = this.getGrayscaleColor();
+      this.color = this.getRBGColor();
     }, 1000);
   },
 };

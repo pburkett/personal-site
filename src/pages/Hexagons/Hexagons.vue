@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-left: -50px; ">
     <div
       class="row"
       :class="{ 'offset-row': i % 2 == 0 }"
@@ -7,7 +7,7 @@
       v-for="i in 20"
       :key="i"
     >
-      <Hexagon v-for="n in 30" :key="n"  :x="n" :y="i" :global-offset="globalOffset" />
+      <Hexagon v-for="n in 40" :key="n"  :x="n" :y="i" :global-offset="globalOffset" />
     </div>
   </div>
 </template>
