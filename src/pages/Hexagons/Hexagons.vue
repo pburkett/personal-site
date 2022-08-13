@@ -16,8 +16,7 @@
       v-for="i in 20"
       :key="i"
     >
-      <!-- <Hexagon v-for="n in 40" :key="n"  :x="n" :y="i" :global-offset="globalOffset" /> -->
-      <ClassHexagon
+      <Hexagon
         v-for="n in 40"
         :key="n"
         :x="n"
@@ -31,15 +30,13 @@
 </template>
 
 <script>
-// import Hexagon from "./Hexagon.vue";
-import ClassHexagon from "./ClassHexagon.vue";
+import Hexagon from "./Hexagon.vue";
 import perlin from "../../perlin.js";
 import Controls from "./Controls";
 export default {
   name: "Hexagons",
   components: {
-    // Hexagon,
-    ClassHexagon,
+    Hexagon,
     Controls,
   },
   methods: {
@@ -53,13 +50,13 @@ export default {
       colors: [
         "808080",
       ],
-      speed: 500,
+      speed: 800,
     };
   },
   mounted() {
-    perlin.seed();
     setInterval(() => {
-      this.globalOffset += 0.1;
+      this.globalOffset += 0.3;
+      // perlin.seed();
     }, this.speed);
   },
 };

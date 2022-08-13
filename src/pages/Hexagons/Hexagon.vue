@@ -7,10 +7,11 @@
       :viewBox="`0 0 362.16 419.04`"
     >
       <path
+      :style="{'transitionDuration':speed * 2 + 'ms' }"
         class="hex-path"
         transform="matrix(0 0.72 -0.72 0 360.72 2.2111206642071)"
         stroke="#ffffff"
-        :fill="color"
+        :fill="'#' + color"
         stroke-width="20"
         stroke-linecap="butt"
         stroke-linejoin="miter"
@@ -22,45 +23,25 @@
 </template>
 
 <script>
-import perlin from "../../perlin.js"
+import colorService from "./ColorService"
+
 export default {
-  props: ["x", "y", 'globalOffset'],
+  props: ["x", "y", "colors", 'globalOffset', 'speed'],
   data() {
-    return { color: "", sizeScalar: 1 };
+    return { color: "", sizeScalar: 1  };
   },
-  methods: {
-    getNoiseHexPair: function (offset) {
-      let noise = 
-    //   Math.round(
-        Math.abs(
-        perlin.get(this.x + offset +this.globalOffset , this.y + offset + this.globalOffset)) 
-        // * 10000) / 10000 ;
-      console.log(noise);
-      let color_part_dec = 200 * noise;
-      let out = Number(parseInt(color_part_dec, 10)).toString(16);
-      if (out.length == 1) return out + out
-      return out
-    },
-    getRBGColor(){
-        return `#${this.getNoiseHexPair(0.25)}${this.getNoiseHexPair(0.4)}${this.getNoiseHexPair(0.8)}`
-    },
-    getGrayscaleColor(){
-        let val = this.getNoiseHexPair(0.25)
-        return `#${val}${val}${val}`
-    }
-    
-  },
+
   mounted() {
-      this.color = this.getRBGColor();
+   this.color = colorService.getNoisyColor(this.colors, this.x + this.globalOffset, this.y + this.globalOffset, )
     setInterval(() => {
-      this.color = this.getRBGColor();
-    }, 1000);
+   this.color = colorService.getNoisyColor(this.colors, this.x + this.globalOffset, this.y + this.globalOffset, )
+    }, this.speed);
   },
 };
 </script>
 
 <style>
 .hex-path {
-  transition: fill 2s linear;
+  transition: fill linear;
 }
 </style>
