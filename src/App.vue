@@ -1,15 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<!-- <home-page/> -->
+<Hexagons/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import HomePage from './pages/Home/HomePage.vue'
+import Hexagons from './pages/Hexagons/Hexagons.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HomePage,
+    Hexagons
   }
 }
 </script>
@@ -20,7 +21,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
