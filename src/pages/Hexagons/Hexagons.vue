@@ -24,6 +24,7 @@
         :colors="colors"
         :global-offset="globalOffset"
         :speed="speed"
+        :border-color="borderColor"
       />
     </div>
   </div>
@@ -31,8 +32,8 @@
 
 <script>
 import Hexagon from "./Hexagon.vue";
-import perlin from "../../perlin.js";
 import Controls from "./Controls";
+import colorService from "./ColorService";
 export default {
   name: "Hexagons",
   components: {
@@ -47,16 +48,15 @@ export default {
   data() {
     return {
       globalOffset: Math.random(),
-      colors: [
-        "808080",
-      ],
+      colors: colorService.getHexSet(),
       speed: 800,
+      borderColor: 'ffffff'
     };
   },
   mounted() {
     setInterval(() => {
       this.globalOffset += 0.3;
-      // perlin.seed();
+      this.borderColor = colorService.getNoisyColor(this.colors, this.globalOffset,this.globalOffset, )
     }, this.speed);
   },
 };

@@ -10,7 +10,7 @@
       :style="{'transitionDuration':speed * 2 + 'ms' }"
         class="hex-path"
         transform="matrix(0 0.72 -0.72 0 360.72 2.2111206642071)"
-        stroke="#ffffff"
+        :stroke="'#' + borderColor"
         :fill="'#' + color"
         stroke-width="20"
         stroke-linecap="butt"
@@ -26,7 +26,7 @@
 import colorService from "./ColorService"
 
 export default {
-  props: ["x", "y", "colors", 'globalOffset', 'speed'],
+  props: ["x", "y", "colors", 'globalOffset', 'speed', 'borderColor'],
   data() {
     return { color: "", sizeScalar: 1  };
   },
@@ -42,6 +42,7 @@ export default {
 
 <style>
 .hex-path {
-  transition: fill linear;
+  transition: fill linear, stroke linear;
+  
 }
 </style>

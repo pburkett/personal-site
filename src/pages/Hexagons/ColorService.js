@@ -38,6 +38,12 @@ class ColorService {
         let index = Math.floor(noise * colors.length);
         return colors[index];
     }
+
+    getHexSet(){
+        var json = require('./material.json');
+
+        return json[Math.floor(Math.random() * json.length)]
+    }
 }
 const colorService = new ColorService()
 export default colorService
