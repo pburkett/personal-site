@@ -21,13 +21,6 @@
     </div>
 
     <input @change="pickColor($event)" type="color" />
-    <button
-      :style="{ border: '#ffffff' }"
-      style="border-width: 5px; border-radius: 20px; border-style: solid"
-      @click="addColor()"
-    >
-      Add
-    </button>
   </div>
 </template>
 
@@ -41,11 +34,10 @@ export default {
   },
   methods: {
     pickColor(e){
-        this.newColor = e.target.value.slice(1);
+        this.$emit('addColor', e.target.value.slice(1))
     },
     addColor(){
         console.log(this.newColor);
-        this.$emit('addColor', this.newColor)
     },
     invertColor: function (hex, bw) {
       if (hex.indexOf("#") === 0) {
