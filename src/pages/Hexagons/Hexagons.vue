@@ -51,16 +51,7 @@ export default {
     return {
       globalOffset: Math.random(),
       colors: [
-        "2a4858",
-        "215d6e",
-        "08737f",
-        "00898a",
-        "089f8f",
-        "39b48e",
-        "64c987",
-        "92dc7e",
-        "c4ec74",
-        "fafa6e",
+        "808080",
       ],
       speed: 500,
     };

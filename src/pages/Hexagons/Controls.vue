@@ -100,4 +100,7 @@ export default {
 .color-button:first-child {
   border-radius: 20px 0px 0px 20px;
 }
+.color-button:only-child {
+  border-radius: 20px 20px 20px 20px !important;
+}
 </style>
