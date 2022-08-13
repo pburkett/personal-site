@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "rm -r docs && npm run build && mv dist docs && git add . && git commit -m 'redeploy' && git push "
+    "deploy": "rm -r docs && npm run build && mv dist docs && git add docs && git commit -m 'redeploy' && git push "
   },
   "dependencies": {
     "core-js": "^3.8.3",
