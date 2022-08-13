@@ -87,12 +87,12 @@ export default {
   padding: 0px 5px 20px 5px;
 }
 .color-button:last-child {
-  border-radius: 0px 20px 20px 0px;
+  border-radius: 0px 10px 20px 0px;
 }
 .color-button:first-child {
-  border-radius: 20px 0px 0px 20px;
+  border-radius: 10px 0px 0px 20px;
 }
 .color-button:only-child {
-  border-radius: 20px 20px 20px 20px !important;
+  border-radius: 10px 10px 20px 20px !important;
 }
 </style>
