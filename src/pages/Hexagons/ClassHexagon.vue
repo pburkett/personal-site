@@ -28,7 +28,7 @@ import perlin from "../../perlin.js";
 export default {
   props: ["x", "y", "colors", 'globalOffset', 'speed'],
   data() {
-    return { color: "", sizeScalar: 1,  };
+    return { color: "", sizeScalar: 1  };
   },
   methods: {
     setColor() {

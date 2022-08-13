@@ -1,5 +1,14 @@
 <template>
-  <div style="height: 50vh; overflow: hidden; width: 100vw">
+  <div
+    style="
+      height: 50vh;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    "
+  >
+    <Controls :colors="colors" @add-color="addColor($event)" />
     <div
       class="row"
       :class="{ 'offset-row': i % 2 == 0 }"
@@ -25,12 +34,18 @@
 // import Hexagon from "./Hexagon.vue";
 import ClassHexagon from "./ClassHexagon.vue";
 import perlin from "../../perlin.js";
-
+import Controls from "./Controls";
 export default {
   name: "Hexagons",
   components: {
     // Hexagon,
     ClassHexagon,
+    Controls,
+  },
+  methods: {
+    addColor: function (e) {
+      this.colors.push(e)
+    },
   },
   data() {
     return {
