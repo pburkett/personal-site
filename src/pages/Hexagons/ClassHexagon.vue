@@ -35,7 +35,6 @@ export default {
       let noise = Math.abs(perlin.get(this.x + this.globalOffset, this.y + this.globalOffset)) * 1.35;
       let index = Math.floor(noise * this.colors.length);
       this.color = this.colors[index];
-      if (index >= 8) console.log(index);
     },
   },
   mounted() {
