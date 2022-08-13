@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import perlin from "../../perlin.js"
 export default {
   props: ["x", "y", 'globalOffset'],
   data() {
