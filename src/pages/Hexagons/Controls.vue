@@ -1,8 +1,8 @@
 <template>
   <div class="controls">
     <div
-      :style="{ maxHeight: isClosed ? '0px' : '1000px' }"
-      style="overflow: hidden; transition: max-height 2s ease"
+      :style="{ maxHeight: isClosed ? '0px' : '1000px', maxWidth: isClosed ? '50px' : '1000px' }"
+      style="overflow: hidden; transition: max-height 2s ease, max-width 2s ease"
     >
       <div
         style="
@@ -16,15 +16,7 @@
         <h5>Most</h5>
         <h5>Least</h5>
       </div>
-      <div
-        style="
-          display: flex;
-          box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.3);
-          border-radius: 6px 6px 20px 20px;
-          margin-left: 20px;
-          margin-right: 20px;
-        "
-      >
+      <div class="color-container">
         <div
           v-for="color in colors"
           :key="color"
@@ -43,18 +35,18 @@
       />
     </div>
 
-      <div style="display: flex; justify-content: end"  @click="isClosed = !isClosed">
-          <ion-icon
-            name="caret-down-outline"
-            class="md icon-large hydrated"
-            :class="{ 'rotate-180': !isClosed, 'rotate-0': isClosed }"
-            style="
-              transition: transform 1s ease;
-              visibility: visible !important;
-            "
-            size="large"
-          ></ion-icon>
-      </div>
+    <div
+      style="display: flex; justify-content: end"
+      @click="isClosed = !isClosed"
+    >
+      <ion-icon
+        name="caret-down-outline"
+        class="md icon-large hydrated"
+        :class="{ 'rotate-180': !isClosed, 'rotate-0': isClosed }"
+        style="transition: transform 1s ease; visibility: visible !important"
+        size="large"
+      ></ion-icon>
+    </div>
   </div>
 </template>
 
@@ -109,5 +101,17 @@ export default {
 }
 .rotate-0 {
   transform: rotateZ(0deg);
+}
+.color-container {
+  display: flex;
+  box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 6px 6px 20px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+@media only screen and (max-width: 728px) {
+    .color-container {
+    display: block !important;
+    }
 }
 </style>
