@@ -1,8 +1,30 @@
 <template>
   <div class="controls">
     <div
-      :style="{ maxHeight: isClosed ? '0px' : '1000px', maxWidth: isClosed ? '50px' : '1000px' }"
-      style="overflow: hidden; transition: max-height 2s ease, max-width 2s ease"
+      style="display: flex; justify-content: end"
+      @click="isClosed = !isClosed"
+    >
+      <ion-icon
+        name="caret-down-outline"
+        class="hydrated"
+        :class="{ 'rotate-180': !isClosed, 'rotate-0': isClosed }"
+        style="
+          font-size: 40px;
+          cursor: pointer;
+          transition: transform 1s ease;
+          visibility: visible !important;
+        "
+      ></ion-icon>
+    </div>
+    <div
+      :style="{
+        maxHeight: isClosed ? '0px' : '80vh',
+        maxWidth: isClosed ? '32px' : '80vw',
+        opacity: isClosed ? 0 : 1,
+      }"
+      style="
+        transition: max-height 1s ease, max-width 1s ease, opacity 1s ease;
+      "
     >
       <div
         style="
@@ -16,6 +38,7 @@
         <h5>Most</h5>
         <h5>Least</h5>
       </div>
+
       <div class="color-container">
         <div
           v-for="color in colors"
@@ -23,29 +46,42 @@
           :style="{ backgroundColor: '#' + color }"
           class="color-button"
         >
-          <p :style="{ color: invertColor(color) }" style="font-weight: 600">
+          <p
+            :style="{ color: invertColor(color) }"
+            style="font-weight: 600; margin-top: 0px; padding-top: 10px"
+          >
             #{{ color }}
           </p>
         </div>
       </div>
-      <input
-        style="margin-top: 20px"
-        @change="pickColor($event)"
-        type="color"
-      />
-    </div>
-
-    <div
-      style="display: flex; justify-content: end"
-      @click="isClosed = !isClosed"
-    >
-      <ion-icon
-        name="caret-down-outline"
-        class="md icon-large hydrated"
-        :class="{ 'rotate-180': !isClosed, 'rotate-0': isClosed }"
-        style="transition: transform 1s ease; visibility: visible !important"
-        size="large"
-      ></ion-icon>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          width: 100%;
+          justify-content: center;
+          margin-top: 20px;
+        "
+      >
+        <label for="new-color">
+          <ion-icon
+            name="add-circle-outline"
+            class="hydrated"
+            style="
+              font-size: 32px;
+              cursor: pointer;
+              transition: transform 1s ease;
+              visibility: visible !important;
+            "
+          ></ion-icon>
+        </label>
+        <input
+          id="new-color"
+          style=""
+          @change="pickColor($event)"
+          type="color"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -65,7 +101,7 @@ export default {
       this.$emit("addColor", e.target.value.slice(1));
     },
     invertColor(hex) {
-      colorService.invertColor(hex, true);
+      return colorService.invertColor(hex, true);
     },
   },
 };
@@ -108,10 +144,25 @@ export default {
   border-radius: 6px 6px 20px 20px;
   margin-left: 20px;
   margin-right: 20px;
+  max-height: 60vh;
+  max-width: 60vw;
+  overflow:scroll;
 }
 @media only screen and (max-width: 728px) {
-    .color-container {
-    display: block !important;
-    }
+  .color-container {
+    display: block;
+  }
+  .color-button {
+    padding: 0px 5px 20px 5px;
+  }
+  .color-button:last-child {
+    border-radius: 0px 0px 6px 6px;
+  }
+  .color-button:first-child {
+    border-radius: 20px 20px 0px 0px;
+  }
+  .color-button:only-child {
+    border-radius: 6px 6px 20px 20px !important;
+  }
 }
 </style>
